@@ -638,39 +638,13 @@
                 <div class="bg-black text-[var(--bg-color)] p-8 md:p-12 reveal delay-100 rounded-lg"><blockquote class="text-2xl md:text-3xl leading-snug font-light">"Por su poesía lírica que... ha hecho de su nombre un símbolo de las aspiraciones idealistas de todo el mundo latinoamericano."</blockquote><p class="mt-4 text-right opacity-70">- Academia Sueca, 1945</p></div>
             </div>
         </section>
-              <section class="w-full p-8 md:p-12 border-t-custom bg-[var(--highlight-bg)]">
-            <div class="max-w-4xl mx-auto text-center reveal">
-                
-                <div class="inline-block px-4 py-2 mb-6 rounded-full text-sm font-semibold"
-                    style="background-color: var(--icon-purple-bg); color: var(--icon-purple-text);">
-                    ¡Participa en nuestro concurso!
-                </div>
-
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">
-                    Mistral Libre: Contribuye y gana premios
-                </h2>
-
-                <p class="text-lg opacity-80 max-w-2xl mx-auto mb-8">
-                    Te invitamos a participar en <strong>Mistral Libre</strong>, nuestro concurso de edición en Wikipedia dedicado al legado de Gabriela Mistral.
-                    Aprende, contribuye al conocimiento libre y <strong>gana premios</strong>.  
-                    Para conocer todas las bases, instrucciones y fechas importantes, visita la página oficial del concurso.
-                </p>
-
-                <a href="https://es.wikipedia.org/wiki/Usuario:Pcartes_(WMCL)/Taller/WikiConcurso_Gabriela_Mistral_80_a%C3%B1os" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="inline-block bg-[var(--accent-color)] text-white font-semibold py-3 px-8 rounded-md shadow hover:bg-opacity-90 transition">
-                    Ir a Mistral Libre →
-                </a>
-            </div>
-</section>
 
     </main>
 
     <footer class="w-full p-8 text-center text-sm opacity-60 border-t-custom bg-[var(--highlight-bg)]">
-        <p>CC BY-SA<span id="footer-year"></span> / Un tributo digital al legado de Gabriela Mistral.</p>
+        <p><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer" class="underline hover:text-[var(--accent-color)] transition">CC BY-SA </a><span id="footer-year"></span> / Un tributo digital al legado de Gabriela Mistral.</p>
         <p class="mt-2 text-xs opacity-50">Toda la información e imágenes se cargan dinámicamente desde Wikipedia y Wikimedia Commons.</p>
-        <p class="mt-2 text-xs opacity-80">Si quieres saber más sobre esta página puedes escribir a contacto[at]wikimediachile.cl</p>
+        <p class="mt-2 text-xs opacity-80">Si quieres saber más sobre esta página puedes escribir a <span id="email-link"></span></p>
     </footer>
 
     <div id="imageLightbox" class="lightbox">
@@ -696,6 +670,16 @@
         const currentYear = new Date().getFullYear();
         document.getElementById('current-year').textContent = currentYear;
         document.getElementById('footer-year').textContent = currentYear;
+
+        const user = "contacto";
+        const domain = "wikimediachile.cl";
+
+        document.getElementById("email-link").innerHTML = `
+            <a href="mailto:${user}@${domain}" 
+            class="underline hover:text-[var(--accent-color)] transition">
+            ${user}@${domain}
+            </a>
+        `;
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1038,6 +1022,8 @@
         initializePage();
     });
     </script>
+    <script data-goatcounter="https://wikimediacl.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
 
