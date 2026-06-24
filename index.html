@@ -1,742 +1,1610 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabriela Mistral: Portafolio de un Legado</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #FFFFFF;
-            --text-color: #202122;
-            --accent-color: #3366CC;
-            --border-color: #A2A9B1;
-            --highlight-bg: #F8F9FA;
-            --link-color: #0063BF;
-            
-            
-            --icon-blue-bg: #EAF3FF;
-            --icon-blue-text: #3366CC;
-            --icon-green-bg: #E6F5EE;
-            --icon-green-text: #008000;
-            --icon-purple-bg: #F4E8FF;
-            --icon-purple-text: #6A0DAD;
-            --icon-yellow-bg: #FFFBEB; 
-            --icon-yellow-text: #D97706; 
-            --icon-gray-bg: #F3F4F6; 
-            --icon-gray-text: #4B5563; 
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Raúl Ruiz: [título del dashboard]</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --bg-color: #ffffff;
+                --text-color: #202122;
+                --accent-color: #3366cc;
+                --border-color: #a2a9b1;
+                --highlight-bg: #f8f9fa;
+                --link-color: #0063bf;
 
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-        }
-        
-        
-        .hero-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: clamp(4rem, 20vw, 18rem);
-            line-height: 0.85;
-            position: relative;
-            z-index: 2;
-
-            
-            color: var(--text-color);
-            
-            
-            background-image: url('wallpaper.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        
-        @supports (-webkit-background-clip: text) or (background-clip: text) {
-            .hero-title {
-                background-clip: text;
-                -webkit-background-clip: text;
-                color: transparent;
+                --icon-blue-bg: #eaf3ff;
+                --icon-blue-text: #3366cc;
+                --icon-green-bg: #e6f5ee;
+                --icon-green-text: #008000;
+                --icon-purple-bg: #f4e8ff;
+                --icon-purple-text: #6a0dad;
+                --icon-yellow-bg: #fffbeb;
+                --icon-yellow-text: #d97706;
+                --icon-gray-bg: #f3f4f6;
+                --icon-gray-text: #4b5563;
             }
-        }
-        
 
-        .border-b-custom { border-bottom: 1px solid var(--border-color); }
-        .border-t-custom { border-top: 1px solid var(--border-color); }
+            body {
+                font-family: "Inter", sans-serif;
+                background-color: var(--bg-color);
+                color: var(--text-color);
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
 
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-        
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-        .delay-100 { transition-delay: 0.1s; }
-        .delay-200 { transition-delay: 0.2s; }
-        .delay-300 { transition-delay: 0.3s; }
-        .delay-400 { transition-delay: 0.4s; }
-        .delay-500 { transition-delay: 0.5s; }
+            h1,
+            h2,
+            h3,
+            h4 {
+                font-family: "Montserrat", sans-serif;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.02em;
+            }
 
-        .work-card {
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            background-color: var(--highlight-bg);
-            border-radius: 0.5rem;
-            border: 1px solid #ddd;
-        }
-        .work-card:hover .work-card-image { transform: scale(1.05); }
-        .work-card:hover .work-card-overlay { background-color: rgba(0,0,0,0.7); }
-        .work-card:hover .work-card-content { transform: translateY(0); opacity: 1; }
-        
-        .work-card-image {
-            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .work-card-overlay { transition: background-color 0.4s ease; }
-        .work-card-content {
-            transform: translateY(20px);
-            opacity: 0;
-            transition: transform 0.4s ease, opacity 0.4s ease;
-        }
-        .work-card-attribution {
-            position: absolute;
-            bottom: 0.5rem;
-            left: 0.5rem;
-            font-size: 9px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 2px 4px;
-            border-radius: 3px;
-            z-index: 10;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-        .work-card:hover .work-card-attribution {
-            opacity: 0.4;
-        }
+            .hero-title {
+                font-family: "Montserrat", sans-serif;
+                font-weight: 700;
+                font-size: clamp(4rem, 20vw, 18rem);
+                line-height: 0.85;
+                position: relative;
+                z-index: 2;
 
-        .gallery-item-wrapper {
-            background-color: var(--highlight-bg);
-            overflow: hidden;
-            border-radius: 0.5rem;
-            position: relative;
-            border: 1px solid var(--border-color);
-            aspect-ratio: 1/1;
-        }
-        .gallery-item {
-            transition: transform 0.4s ease, filter 0.4s ease;
-            filter: grayscale(80%) contrast(110%);
-            width: 100%;
-            height: 100%;
-            object-fit: cover; 
-        }
-        .gallery-item-wrapper:hover .gallery-item {
-            transform: scale(1.03);
-            filter: grayscale(0%) contrast(100%);
-            z-index: 10;
-        }
-        .gallery-item-attribution {
-            position: absolute;
-            bottom: 0.5rem;
-            left: 0.5rem;
-            right: 0.5rem;
-            font-size: 10px;
-            line-height: 1.3;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 4px 5px;
-            border-radius: 3px;
-            z-index: 11;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        .gallery-item-wrapper:hover .gallery-item-attribution {
-            opacity: 1;
-            transform: translateY(0);
-        }
+                color: var(--text-color);
 
-        
-        .gallery-cta-card {
-            background-color: var(--highlight-bg);
-            border-radius: 0.5rem;
-            border: 2px dashed var(--border-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            text-align: center;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-            aspect-ratio: 1/1;
-        }
-        .gallery-cta-card:hover {
-            background-color: #f0f0f0;
-            border-color: var(--accent-color);
-        }
-        
-        .quote-mark {
-            font-size: 8rem;
-            line-height: 0.5;
-            color: var(--accent-color);
-            opacity: 0.3;
-        }
+                background-image: url("wallpaper.jpg");
+                background-size: cover;
+                background-position: center;
+            }
 
-        .lightbox {
-            display: none; position: fixed; z-index: 999; padding-top: 60px;
-            left: 0; top: 0; width: 100%; height: 100%; overflow: auto;
-            background-color: rgba(26, 26, 26, 0.95);
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-        }
-        .lightbox-container {
-            margin: auto;
-            display: block;
-            width: 90%;
-            max-width: 900px;
-        }
-        .lightbox-content {
-            display: block;
-            width: 100%;
-            border-radius: 0.5rem;
-            animation-name: zoom; animation-duration: 0.4s;
-            max-height: 80vh;
-            object-fit: contain;
-        }
-        #lightboxCaption {
-            margin-top: 10px;
-            color: #ccc;
-            text-align: center;
-            font-size: 0.9rem;
-            padding: 0 10px;
-        }
+            @supports (-webkit-background-clip: text) or (background-clip: text) {
+                .hero-title {
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    color: transparent;
+                }
+            }
 
-        @keyframes zoom { from {transform:scale(0)} to {transform:scale(1)} }
-        .lightbox-close {
-            position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px;
-            font-weight: bold; transition: 0.3s;
-        }
-        .lightbox-close:hover, .lightbox-close:focus { color: #bbb; text-decoration: none; cursor: pointer; }
-        
-        
-        .milestone-card {
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 0.75rem;
-            padding: 1.5rem; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .milestone-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
-        .milestone-icon {
-            flex-shrink: 0;
-            width: 4rem; 
-            height: 4rem; 
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem; 
-        }
-        .milestone-icon svg {
-            width: 2rem; 
-            height: 2rem; 
-        }
-        
-        
-        .loader {
-            border: 3px solid rgba(26, 26, 26, 0.2); border-radius: 50%;
-            border-top: 3px solid var(--text-color); width: 32px; height: 32px;
-            animation: spin 1.5s linear infinite;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        .dynamic-content { min-height: 100px; }
+            .border-b-custom {
+                border-bottom: 1px solid var(--border-color);
+            }
+            .border-t-custom {
+                border-top: 1px solid var(--border-color);
+            }
 
-        .cta-button {
-            background-color: var(--accent-color);
-            color: white;
-        }
-        .cta-button:hover {
-            background-color: #2a4e99;
-        }
+            .reveal {
+                opacity: 0;
+                transform: translateY(50px);
+                transition:
+                    opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+            }
 
-        .info-card {
-            background-color: var(--bg-color);
-            border-radius: 0.75rem;
-            
-            padding: 1rem; 
-            border: 1px solid #E5E7EB;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
-        .info-card-icon {
-            flex-shrink: 0;
-            width: 3rem; 
-            height: 3rem; 
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+            .reveal.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .delay-100 {
+                transition-delay: 0.1s;
+            }
+            .delay-200 {
+                transition-delay: 0.2s;
+            }
+            .delay-300 {
+                transition-delay: 0.3s;
+            }
+            .delay-400 {
+                transition-delay: 0.4s;
+            }
+            .delay-500 {
+                transition-delay: 0.5s;
+            }
 
-        
-        .hero-title-container {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            text-align: center;
-            color: var(--text-color);
-            line-height: 1; 
-            padding: 0.5rem 0;
-        }
-        .hero-title-container h1 {
-            font-size: clamp(3rem, 12vw, 8rem); 
-            line-height: 0.9;
-        }
-        .hero-title-container h2 {
-            font-size: clamp(4rem, 18vw, 12rem); 
-            line-height: 0.9;
-        }
-        .hero-title-line {
-            width: 80%; 
-            max-width: 400px; 
-            height: 1px;
-            background-color: var(--text-color);
-            margin: 1.5rem auto; 
-            opacity: 0.5;
-        }
-        .hero-subtitle {
-            font-family: 'Inter', sans-serif; 
-            font-weight: 300; 
-            font-size: clamp(0.9rem, 3vw, 1.5rem);
-            font-style: italic;
-            opacity: 0.8;
-            letter-spacing: 0.05em;
-        }
+            .work-card {
+                transition:
+                    transform 0.4s ease,
+                    box-shadow 0.4s ease;
+                position: relative;
+                overflow: hidden;
+                background-color: var(--highlight-bg);
+                border-radius: 0.5rem;
+                border: 1px solid #ddd;
+            }
+            .work-card:hover .work-card-image {
+                transform: scale(1.05);
+            }
+            .work-card:hover .work-card-overlay {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+            .work-card:hover .work-card-content {
+                transform: translateY(0);
+                opacity: 1;
+            }
 
-        .section-title-left {
-            margin-bottom: 2rem; 
-        }
-        .section-title-left .icon-wrapper {
-             width: 4rem; 
-             height: 4rem; 
-             border-radius: 50%;
-        }
-        .section-title-left h2 {
-            font-size: clamp(2.5rem, 8vw, 3.75rem); 
-            line-height: 1;
-            margin: 0;
-        }
-        .section-title-left .line {
-             height: 2px;
-             width: 100%;
-             max-width: 24rem; 
-             margin-top: 1rem;
-             border-radius: 9999px;
-        }
+            .work-card-image {
+                transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .work-card-overlay {
+                transition: background-color 0.4s ease;
+            }
+            .work-card-content {
+                transform: translateY(20px);
+                opacity: 0;
+                transition:
+                    transform 0.4s ease,
+                    opacity 0.4s ease;
+            }
+            .work-card-attribution {
+                position: absolute;
+                bottom: 0.5rem;
+                left: 0.5rem;
+                font-size: 9px;
+                color: white;
+                background-color: rgba(0, 0, 0, 0.6);
+                padding: 2px 4px;
+                border-radius: 3px;
+                z-index: 10;
+                opacity: 0.7;
+                transition: opacity 0.3s ease;
+            }
+            .work-card:hover .work-card-attribution {
+                opacity: 0.4;
+            }
 
-    </style>
-</head>
-<body class="overflow-x-hidden">
+            .gallery-item-wrapper {
+                background-color: var(--highlight-bg);
+                overflow: hidden;
+                border-radius: 0.5rem;
+                position: relative;
+                border: 1px solid var(--border-color);
+                aspect-ratio: 1/1;
+            }
+            .gallery-item {
+                transition:
+                    transform 0.4s ease,
+                    filter 0.4s ease;
+                filter: grayscale(80%) contrast(110%);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .gallery-item-wrapper:hover .gallery-item {
+                transform: scale(1.03);
+                filter: grayscale(0%) contrast(100%);
+                z-index: 10;
+            }
+            .gallery-item-attribution {
+                position: absolute;
+                bottom: 0.5rem;
+                left: 0.5rem;
+                right: 0.5rem;
+                font-size: 10px;
+                line-height: 1.3;
+                color: white;
+                background-color: rgba(0, 0, 0, 0.7);
+                padding: 4px 5px;
+                border-radius: 3px;
+                z-index: 11;
+                opacity: 0;
+                transform: translateY(10px);
+                transition:
+                    opacity 0.4s ease,
+                    transform 0.4s ease;
+            }
+            .gallery-item-wrapper:hover .gallery-item-attribution {
+                opacity: 1;
+                transform: translateY(0);
+            }
 
-    <header class="relative min-h-screen w-full p-4 md:p-8 flex flex-col justify-between border-b-custom overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <picture>
-                <source media="(max-width: 768px)" srcset="MISTRAL-mobile.png">
-                <img 
-                    src="MISTRAL.png" 
-                    alt="Collage de Gabriela Mistral" 
-                    class="w-full h-full object-cover" loading="eager" >
-            </picture>
-            
+            .gallery-cta-card {
+                background-color: var(--highlight-bg);
+                border-radius: 0.5rem;
+                border: 2px dashed var(--border-color);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;
+                text-align: center;
+                transition:
+                    background-color 0.3s ease,
+                    border-color 0.3s ease;
+                aspect-ratio: 1/1;
+            }
+            .gallery-cta-card:hover {
+                background-color: #f0f0f0;
+                border-color: var(--accent-color);
+            }
 
+            .quote-mark {
+                font-size: 8rem;
+                line-height: 0.5;
+                color: var(--accent-color);
+                opacity: 0.3;
+            }
 
-           <!-- <img src="MISTRAL.png" alt="Collage de Gabriela Mistral" class="w-full h-full object-contain" loading="eager"> -->
-            <!-- <div class="absolute inset-0 bg-[var(--bg-color)] opacity-50"></div> -->
-            </div>
-        <nav class="flex justify-between items-center text-sm relative z-10">
-            <a href="https://wikimedia.cl/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 font-semibold">
-                <img src="LOGO_NEGRO_OFICIAL.svg" alt="Logo de Wikimedia Chile" class="h-16 w-auto">
-            </a>
-            <div id="current-year" class="opacity-60"></div>
-        </nav>
-        <div class="flex justify-between items-end text-sm relative z-10">
-            <div></div>
-            <a href="#biografia" class="font-semibold uppercase tracking-wider flex items-center gap-2">Explorar<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/></svg></a>
-        </div>
-    </header>
-    
-    <main>
-        <section id="biografia" class="w-full p-6 md:p-10 border-b-custom">
-            
-            <div class="section-title-left reveal mb-8">
-                <div class="flex items-center gap-4">
-                    <div class="icon-wrapper flex-shrink-0 flex items-center justify-center" style="background-color: var(--icon-purple-bg); color: var(--icon-purple-text);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                    </div>
-                    <h2>La Voz de una Nación</h2>
-                </div>
-                <div class="line" style="background-color: var(--icon-purple-bg);"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+            .lightbox {
+                display: none;
+                position: fixed;
+                z-index: 999;
+                padding-top: 60px;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(26, 26, 26, 0.95);
+                -webkit-backdrop-filter: blur(8px);
+                backdrop-filter: blur(8px);
+            }
+            .lightbox-container {
+                margin: auto;
+                display: block;
+                width: 90%;
+                max-width: 900px;
+            }
+            .lightbox-content {
+                display: block;
+                width: 100%;
+                border-radius: 0.5rem;
+                animation-name: zoom;
+                animation-duration: 0.4s;
+                max-height: 80vh;
+                object-fit: contain;
+            }
+            #lightboxCaption {
+                margin-top: 10px;
+                color: #ccc;
+                text-align: center;
+                font-size: 0.9rem;
+                padding: 0 10px;
+            }
 
-                <figure class="reveal dynamic-content rounded-lg overflow-hidden shadow-2xl relative md:col-span-1 lg:col-span-1" id="biografia-imagen-container">
-                    <div class="flex items-center justify-center h-full"><div class="loader"></div><p class="ml-3 opacity-60">Cargando imagen...</p></div>
-                </figure>
-                
-                <div class="reveal delay-100 flex flex-col justify-start items-start text-left md:col-span-1 lg:col-span-1">
-                    
-                    <div class="dynamic-content space-y-4" id="biografia-texto-container">
-                        <div class="flex items-center justify-start space-x-2 h-16"><div class="loader"></div><p class="opacity-60">Cargando biografía...</p></div>
-                    </div>
-                    
-                    <div id="wikidata-info-container" class="mt-8 pt-6 border-t-custom dynamic-content w-full">
-                        <div class="grid grid-cols-1 gap-4 text-sm">
-                            
-                            <div class="info-card reveal delay-200">
-                                <div class="flex items-center gap-3">
-                                    <div class="info-card-icon" style="background-color: var(--icon-blue-bg); color: var(--icon-blue-text);">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-normal uppercase tracking-wider text-xs opacity-70 mb-0.5">Nacimiento</h4>
-                                        <p id="info-nacimiento" class="font-semibold text-[var(--text-color)] text-sm">Cargando...</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="info-card reveal delay-300">
-                                <div class="flex items-center gap-3">
-                                    <div class="info-card-icon" style="background-color: var(--icon-green-bg); color: var(--icon-green-text);">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-normal uppercase tracking-wider text-xs opacity-70 mb-0.5">Lugar</h4>
-                                        <p id="info-lugar" class="font-semibold text-[var(--text-color)] text-sm">Cargando...</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="info-card reveal delay-400">
-                                 <div class="flex items-center gap-3">
-                                    <div class="info-card-icon" style="background-color: var(--icon-purple-bg); color: var(--icon-purple-text);">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-normal uppercase tracking-wider text-xs opacity-70 mb-0.5">Roles</h4>
-                                        <p id="info-roles" class="font-semibold text-[var(--text-color)] text-sm leading-snug">Cargando...</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                     </div>
-                </div> <div class="reveal delay-200 flex flex-col justify-start items-start text-left md:col-span-2 lg:col-span-1">
-                    
-                    <div id="reconocimientos-container" class="dynamic-content w-full">
-                        <h3 class="text-2xl font-semibold mb-4 opacity-90 reveal delay-200">Reconocimientos</h3>
-                        <div class="grid grid-cols-1 gap-4 text-sm">
-                            
-                            <div class="info-card reveal delay-300">
-                                <div class="flex items-center gap-3">
-                                    <div class="info-card-icon" style="background-color: var(--icon-yellow-bg); color: var(--icon-yellow-text);">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-normal uppercase tracking-wider text-xs opacity-70 mb-0.5">Premio Nobel</h4>
-                                        <p class="font-semibold text-[var(--text-color)] text-sm">Literatura (1945)</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="info-card reveal delay-400">
-                                <div class="flex items-center gap-3">
-                                    <div class="info-card-icon" style="background-color: var(--icon-green-bg); color: var(--icon-green-text);">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-normal uppercase tracking-wider text-xs opacity-70 mb-0.5">Premio Nacional</h4>
-                                        <p class="font-semibold text-[var(--text-color)] text-sm">Literatura (1951)</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            @keyframes zoom {
+                from {
+                    transform: scale(0);
+                }
+                to {
+                    transform: scale(1);
+                }
+            }
+            .lightbox-close {
+                position: absolute;
+                top: 15px;
+                right: 35px;
+                color: #f1f1f1;
+                font-size: 40px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+            .lightbox-close:hover,
+            .lightbox-close:focus {
+                color: #bbb;
+                text-decoration: none;
+                cursor: pointer;
+            }
 
-                    <div id="sabias-que-container" class="mt-8 pt-6 border-t-custom dynamic-content w-full">
-                        <h3 class="text-2xl font-semibold mb-4 opacity-90 reveal delay-200">¿Sabías que?</h3>
-                        <div class="grid grid-cols-1 gap-4 text-sm"> <div class="info-card reveal delay-300">
-                                <div class="flex items-center gap-3">
-                                    <div class="info-card-icon" style="background-color: var(--icon-purple-bg); color: var(--icon-purple-text);">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-normal uppercase tracking-wider text-xs opacity-70 mb-0.5">En su Honor</h4>
-                                        <p class="font-semibold text-[var(--text-color)] text-sm leading-snug">Su imagen apareció en el billete de 5.000 pesos chilenos, un honor que refleja su inmensa contribución a la cultura del país.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="info-card reveal delay-400">
-                                <div class="flex items-center gap-3">
-                                    <div class="info-card-icon" style="background-color: var(--icon-blue-bg); color: var(--icon-blue-text);">
-                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 22h-6a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4h6"></path><path d="M18 6V2"></path><path d="M18 10V6"></path><path d="M12 10v4"></path><path d="M12 18v-2"></path><path d="M12 6V2"></path></svg>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-normal uppercase tracking-wider text-xs opacity-70 mb-0.5">Pseudónimo</h4>
-                                        <p class="font-semibold text-[var(--text-color)] text-sm leading-snug">Adoptó su seudónimo en honor a sus poetas favoritos: Gabriele D'Annunzio y Frédéric Mistral.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            </div> </div>
+            .milestone-card {
+                background-color: var(--bg-color);
+                border: 1px solid var(--border-color);
+                border-radius: 0.75rem;
+                padding: 1.5rem;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                transition:
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease;
+            }
+            .milestone-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            }
+            .milestone-icon {
+                flex-shrink: 0;
+                width: 4rem;
+                height: 4rem;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+            .milestone-icon svg {
+                width: 2rem;
+                height: 2rem;
+            }
 
-                </div> </div> </section>
+            .loader {
+                border: 3px solid rgba(26, 26, 26, 0.2);
+                border-radius: 50%;
+                border-top: 3px solid var(--text-color);
+                width: 32px;
+                height: 32px;
+                animation: spin 1.5s linear infinite;
+            }
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
 
-        <section id="hitos" class="w-full p-8 md:p-12 border-b-custom bg-[var(--highlight-bg)] relative">
-            <div class="section-title-left reveal mb-8">
-                <div class="flex items-center gap-4">
-                    <div class="icon-wrapper flex-shrink-0 flex items-center justify-center" style="background-color: var(--icon-yellow-bg); color: var(--icon-yellow-text);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15c0 4.4 3.6 8 8 8s8-3.6 8-8c0-4.4-3.6-8-8-8s-8 3.6-8 8Z"></path><path d="M12 20v-8"></path><path d="M5 12.5c4-3 8-3 14 0"></path></svg>
-                    </div>
-                    <h2>Hitos de su Vida</h2>
-                </div>
-                <div class="line" style="background-color: var(--icon-yellow-bg);"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto" id="hitos-container-horizontal">
-                
-                <div class="milestone-card reveal delay-100">
-                    <div class="milestone-icon" style="background-color: var(--icon-blue-bg); color: var(--icon-blue-text);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15c0 4.4 3.6 8 8 8s8-3.6 8-8c0-4.4-3.6-8-8-8s-8 3.6-8 8Z"></path><path d="M12 20v-8"></path><path d="M5 12.5c4-3 8-3 14 0"></path></svg>
-                    </div>
-                    <h3 class="text-3xl">1889</h3>
-                    <h4 class="text-lg font-semibold text-[var(--accent-color)] mt-1">Nacimiento</h4>
-                    <p class="opacity-70 mt-3 text-sm">Nace Lucila Godoy Alcayaga en Vicuña, Chile. Su infancia en el Valle del Elqui marcaría su obra.</p>
-                </div>
-                
-                <div class="milestone-card reveal delay-200">
-                    <div class="milestone-icon" style="background-color: var(--icon-green-bg); color: var(--icon-green-text);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
-                    </div>
-                    <h3 class="text-3xl">1914</h3>
-                    <h4 class="text-lg font-semibold text-[var(--accent-color)] mt-1">Juegos Florales</h4>
-                    <p class="opacity-70 mt-3 text-sm">Gana con sus 'Sonetos de la Muerte' en Santiago, dándole notoriedad nacional.</p>
-                </div>
-                
-                <div class="milestone-card reveal delay-300">
-                    <div class="milestone-icon" style="background-color: var(--icon-purple-bg); color: var(--icon-purple-text);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                    </div>
-                    <h3 class="text-3xl">1922</h3>
-                    <h4 class="text-lg font-semibold text-[var(--accent-color)] mt-1">Publica Desolación</h4>
-                    <p class="opacity-70 mt-3 text-sm">Publica en Nueva York su primera gran obra, consolidando su voz única.</p>
-                </div>
-                
-                <div class="milestone-card reveal delay-400">
-                    <div class="milestone-icon" style="background-color: var(--icon-yellow-bg); color: var(--icon-yellow-text);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                    </div>
-                    <h3 class="text-3xl">1945</h3>
-                    <h4 class="text-lg font-semibold text-[var(--accent-color)] mt-1">Premio Nobel</h4>
-                    <p class="opacity-70 mt-3 text-sm">Recibe el Premio Nobel de Literatura, siendo la primera latinoamericana en obtenerlo.</p>
-                </div>
-                
-                <div class="milestone-card reveal delay-500">
-                    <div class="milestone-icon" style="background-color: var(--icon-gray-bg); color: var(--icon-gray-text);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 0 0-6 0c0 1.66.83 3.12 2.05 4.05L5.03 18.13a.5.5 0 0 0 .44.87h13.06a.5.5 0 0 0 .44-.87L15.95 9.05C17.17 8.12 18 6.66 18 5a3 3 0 0 0-6 0Z"></path><path d="M12 19v3"></path></svg>
-                    </div>
-                    <h3 class="text-3xl">1957</h3>
-                    <h4 class="text-lg font-semibold text-[var(--accent-color)] mt-1">Fallecimiento</h4>
-                    <p class="opacity-70 mt-3 text-sm">Muere en Nueva York. Sus restos son repatriados y homenajeados en Chile.</p>
-                </div>
-                
-            </div>
-        </section>
-        <section id="obra" class="w-full p-8 md:p-12 border-b-custom">
-            <div class="section-title-left reveal mb-8">
-                 <div class="flex items-center gap-4">
-                    <div class="icon-wrapper flex-shrink-0 flex items-center justify-center" style="background-color: var(--icon-purple-bg); color: var(--icon-purple-text);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                    </div>
-                    <h2>Obras Fundamentales</h2>
-                </div>
-                <div class="line" style="background-color: var(--icon-purple-bg);"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="obras-container">
-                <div class="flex items-center justify-center h-48 col-span-full"><div class="loader"></div><p class="ml-3 opacity-60">Cargando obras...</p></div>
-            </div>
-        </section>
+            .dynamic-content {
+                min-height: 100px;
+            }
 
-        <section id="citas" class="relative w-full p-8 md:p-12 border-b-custom text-center overflow-hidden">
+            .cta-button {
+                background-color: var(--accent-color);
+                color: white;
+            }
+            .cta-button:hover {
+                background-color: #2a4e99;
+            }
 
+            .info-card {
+                background-color: var(--bg-color);
+                border-radius: 0.75rem;
+
+                padding: 1rem;
+                border: 1px solid #e5e7eb;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                transition:
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease;
+            }
+            .info-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            }
+            .info-card-icon {
+                flex-shrink: 0;
+                width: 3rem;
+                height: 3rem;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hero-title-container {
+                font-family: "Montserrat", sans-serif;
+                font-weight: 700;
+                text-align: center;
+                color: var(--text-color);
+                line-height: 1;
+                padding: 0.5rem 0;
+            }
+            .hero-title-container h1 {
+                font-size: clamp(3rem, 12vw, 8rem);
+                line-height: 0.9;
+            }
+            .hero-title-container h2 {
+                font-size: clamp(4rem, 18vw, 12rem);
+                line-height: 0.9;
+            }
+            .hero-title-line {
+                width: 80%;
+                max-width: 400px;
+                height: 1px;
+                background-color: var(--text-color);
+                margin: 1.5rem auto;
+                opacity: 0.5;
+            }
+            .hero-subtitle {
+                font-family: "Inter", sans-serif;
+                font-weight: 300;
+                font-size: clamp(0.9rem, 3vw, 1.5rem);
+                font-style: italic;
+                opacity: 0.8;
+                letter-spacing: 0.05em;
+            }
+
+            .section-title-left {
+                margin-bottom: 2rem;
+            }
+            .section-title-left .icon-wrapper {
+                width: 4rem;
+                height: 4rem;
+                border-radius: 50%;
+            }
+            .section-title-left h2 {
+                font-size: clamp(2.5rem, 8vw, 3.75rem);
+                line-height: 1;
+                margin: 0;
+            }
+            .section-title-left .line {
+                height: 2px;
+                width: 100%;
+                max-width: 24rem;
+                margin-top: 1rem;
+                border-radius: 9999px;
+            }
+        </style>
+    </head>
+    <body class="overflow-x-hidden">
+        <header
+            class="relative min-h-screen w-full p-4 md:p-8 flex flex-col justify-between border-b-custom overflow-hidden"
+        >
             <div class="absolute inset-0 z-0">
-                <img src="wallpaper.jpg" alt="Fondo difuminado" class="w-full h-full object-cover filter blur-lg opacity-60 scale-110">
-                <div class="absolute inset-0 bg-[var(--highlight-bg)] opacity-70"></div>
+                <picture>
+                    <source
+                        media="(max-width: 768px)"
+                        srcset="MISTRAL-mobile.png"
+                    />
+                    <img
+                        src="MISTRAL.png"
+                        alt="Collage de Raúl Ruiz"
+                        class="w-full h-full object-cover"
+                        loading="eager"
+                    />
+                </picture>
+
+                <!-- <img src="MISTRAL.png" alt="Collage de Raúl Ruiz" class="w-full h-full object-contain" loading="eager"> -->
+                <!-- <div class="absolute inset-0 bg-[var(--bg-color)] opacity-50"></div> -->
             </div>
-            <div class="relative z-10 max-w-4xl mx-auto reveal" id="cita-container">
-                </div>
-        </section>
-        
-        <section id="galeria" class="w-full p-8 md:p-12 border-b-custom">
-            <div class="section-title-left reveal mb-8">
-                 <div class="flex items-center gap-4">
-                    <div class="icon-wrapper flex-shrink-0 flex items-center justify-center" style="background-color: var(--icon-blue-bg); color: var(--icon-blue-text);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 8v10a3 3 0 0 0 3 3h2a.5.5 0 0 0 0-1H18a2 2 0 0 1-2-2V8h4l-7-7-7 7h4z"></path></svg>
+            <nav
+                class="flex justify-between items-center text-sm relative z-10"
+            >
+                <a
+                    href="https://wikimedia.cl/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-2 font-semibold"
+                >
+                    <img
+                        src="LOGO_NEGRO_OFICIAL.svg"
+                        alt="Logo de Wikimedia Chile"
+                        class="h-16 w-auto"
+                    />
+                </a>
+                <div id="current-year" class="opacity-60"></div>
+            </nav>
+            <div class="flex justify-between items-end text-sm relative z-10">
+                <div></div>
+                <a
+                    href="#biografia"
+                    class="font-semibold uppercase tracking-wider flex items-center gap-2"
+                    >Explorar<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-arrow-down"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"
+                        /></svg
+                ></a>
+            </div>
+        </header>
+
+        <main>
+            <section id="biografia" class="w-full p-6 md:p-10 border-b-custom">
+                <div class="section-title-left reveal mb-8">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="icon-wrapper flex-shrink-0 flex items-center justify-center"
+                            style="
+                                background-color: var(--icon-purple-bg);
+                                color: var(--icon-purple-text);
+                            "
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"
+                                ></path>
+                                <path
+                                    d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h2>La Voz de una Nación</h2>
                     </div>
-                    <h2>Galería de una Vida</h2>
+                    <div
+                        class="line"
+                        style="background-color: var(--icon-purple-bg)"
+                    ></div>
                 </div>
-                <div class="line" style="background-color: var(--icon-blue-bg);"></div>
-            </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="galeria-container">
-                <div class="flex items-center justify-center h-48 col-span-full">
-                    <div class="loader"></div><p class="ml-3 opacity-60">Cargando galería desde Wikimedia Commons...</p>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start"
+                >
+                    <figure
+                        class="reveal dynamic-content rounded-lg overflow-hidden shadow-2xl relative md:col-span-1 lg:col-span-1"
+                        id="biografia-imagen-container"
+                    >
+                        <div class="flex items-center justify-center h-full">
+                            <div class="loader"></div>
+                            <p class="ml-3 opacity-60">Cargando imagen...</p>
+                        </div>
+                    </figure>
+
+                    <div
+                        class="reveal delay-100 flex flex-col justify-start items-start text-left md:col-span-1 lg:col-span-1"
+                    >
+                        <div
+                            class="dynamic-content space-y-4"
+                            id="biografia-texto-container"
+                        >
+                            <div
+                                class="flex items-center justify-start space-x-2 h-16"
+                            >
+                                <div class="loader"></div>
+                                <p class="opacity-60">Cargando biografía...</p>
+                            </div>
+                        </div>
+
+                        <div
+                            id="wikidata-info-container"
+                            class="mt-8 pt-6 border-t-custom dynamic-content w-full"
+                        >
+                            <div class="grid grid-cols-1 gap-4 text-sm">
+                                <div class="info-card reveal delay-200">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="info-card-icon"
+                                            style="
+                                                background-color: var(
+                                                    --icon-blue-bg
+                                                );
+                                                color: var(--icon-blue-text);
+                                            "
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <rect
+                                                    x="3"
+                                                    y="4"
+                                                    width="18"
+                                                    height="18"
+                                                    rx="2"
+                                                    ry="2"
+                                                ></rect>
+                                                <line
+                                                    x1="16"
+                                                    y1="2"
+                                                    x2="16"
+                                                    y2="6"
+                                                ></line>
+                                                <line
+                                                    x1="8"
+                                                    y1="2"
+                                                    x2="8"
+                                                    y2="6"
+                                                ></line>
+                                                <line
+                                                    x1="3"
+                                                    y1="10"
+                                                    x2="21"
+                                                    y2="10"
+                                                ></line>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4
+                                                class="font-normal uppercase tracking-wider text-xs opacity-70 mb-0.5"
+                                            >
+                                                Nacimiento
+                                            </h4>
+                                            <p
+                                                id="info-nacimiento"
+                                                class="font-semibold text-[var(--text-color)] text-sm"
+                                            >
+                                                Cargando...
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="info-card reveal delay-300">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="info-card-icon"
+                                            style="
+                                                background-color: var(
+                                                    --icon-green-bg
+                                                );
+                                                color: var(--icon-green-text);
+                                            "
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <path
+                                                    d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                                                ></path>
+                                                <circle
+                                                    cx="12"
+                                                    cy="10"
+                                                    r="3"
+                                                ></circle>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4
+                                                class="font-normal uppercase tracking-wider text-xs opacity-70 mb-0.5"
+                                            >
+                                                Lugar
+                                            </h4>
+                                            <p
+                                                id="info-lugar"
+                                                class="font-semibold text-[var(--text-color)] text-sm"
+                                            >
+                                                Cargando...
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="info-card reveal delay-400">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="info-card-icon"
+                                            style="
+                                                background-color: var(
+                                                    --icon-purple-bg
+                                                );
+                                                color: var(--icon-purple-text);
+                                            "
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <rect
+                                                    x="2"
+                                                    y="7"
+                                                    width="20"
+                                                    height="14"
+                                                    rx="2"
+                                                    ry="2"
+                                                ></rect>
+                                                <path
+                                                    d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"
+                                                ></path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4
+                                                class="font-normal uppercase tracking-wider text-xs opacity-70 mb-0.5"
+                                            >
+                                                Roles
+                                            </h4>
+                                            <p
+                                                id="info-roles"
+                                                class="font-semibold text-[var(--text-color)] text-sm leading-snug"
+                                            >
+                                                Cargando...
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="reveal delay-200 flex flex-col justify-start items-start text-left md:col-span-2 lg:col-span-1"
+                    >
+                        <div
+                            id="reconocimientos-container"
+                            class="dynamic-content w-full"
+                        >
+                            <h3
+                                class="text-2xl font-semibold mb-4 opacity-90 reveal delay-200"
+                            >
+                                Reconocimientos
+                            </h3>
+                            <div class="grid grid-cols-1 gap-4 text-sm">
+                                <div class="info-card reveal delay-300">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="info-card-icon"
+                                            style="
+                                                background-color: var(
+                                                    --icon-yellow-bg
+                                                );
+                                                color: var(--icon-yellow-text);
+                                            "
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <polygon
+                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                                                ></polygon>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4
+                                                class="font-normal uppercase tracking-wider text-xs opacity-70 mb-0.5"
+                                            >
+                                                Premio Nobel
+                                            </h4>
+                                            <p
+                                                class="font-semibold text-[var(--text-color)] text-sm"
+                                            >
+                                                Literatura (1945)
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="info-card reveal delay-400">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="info-card-icon"
+                                            style="
+                                                background-color: var(
+                                                    --icon-green-bg
+                                                );
+                                                color: var(--icon-green-text);
+                                            "
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <circle
+                                                    cx="12"
+                                                    cy="8"
+                                                    r="6"
+                                                ></circle>
+                                                <path
+                                                    d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"
+                                                ></path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4
+                                                class="font-normal uppercase tracking-wider text-xs opacity-70 mb-0.5"
+                                            >
+                                                Premio Nacional
+                                            </h4>
+                                            <p
+                                                class="font-semibold text-[var(--text-color)] text-sm"
+                                            >
+                                                Literatura (1951)
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            id="sabias-que-container"
+                            class="mt-8 pt-6 border-t-custom dynamic-content w-full"
+                        >
+                            <h3
+                                class="text-2xl font-semibold mb-4 opacity-90 reveal delay-200"
+                            >
+                                ¿Sabías que?
+                            </h3>
+                            <div class="grid grid-cols-1 gap-4 text-sm">
+                                <div class="info-card reveal delay-300">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="info-card-icon"
+                                            style="
+                                                background-color: var(
+                                                    --icon-purple-bg
+                                                );
+                                                color: var(--icon-purple-text);
+                                            "
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <path
+                                                    d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                                ></path>
+                                                <circle
+                                                    cx="12"
+                                                    cy="12"
+                                                    r="3"
+                                                ></circle>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4
+                                                class="font-normal uppercase tracking-wider text-xs opacity-70 mb-0.5"
+                                            >
+                                                En su Honor
+                                            </h4>
+                                            <p
+                                                class="font-semibold text-[var(--text-color)] text-sm leading-snug"
+                                            >
+                                                Su imagen apareció en el billete
+                                                de 5.000 pesos chilenos, un
+                                                honor que refleja su inmensa
+                                                contribución a la cultura del
+                                                país.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="info-card reveal delay-400">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="info-card-icon"
+                                            style="
+                                                background-color: var(
+                                                    --icon-blue-bg
+                                                );
+                                                color: var(--icon-blue-text);
+                                            "
+                                        >
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <path
+                                                    d="M18 22h-6a4 4 0 0 1-4-4V6a4 4 0 0 1 4-4h6"
+                                                ></path>
+                                                <path d="M18 6V2"></path>
+                                                <path d="M18 10V6"></path>
+                                                <path d="M12 10v4"></path>
+                                                <path d="M12 18v-2"></path>
+                                                <path d="M12 6V2"></path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4
+                                                class="font-normal uppercase tracking-wider text-xs opacity-70 mb-0.5"
+                                            >
+                                                Pseudónimo
+                                            </h4>
+                                            <p
+                                                class="font-semibold text-[var(--text-color)] text-sm leading-snug"
+                                            >
+                                                Adoptó su seudónimo en honor a
+                                                sus poetas favoritos: Gabriele
+                                                D'Annunzio y Frédéric Mistral.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </section>
+
+            <section
+                id="hitos"
+                class="w-full p-8 md:p-12 border-b-custom bg-[var(--highlight-bg)] relative"
+            >
+                <div class="section-title-left reveal mb-8">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="icon-wrapper flex-shrink-0 flex items-center justify-center"
+                            style="
+                                background-color: var(--icon-yellow-bg);
+                                color: var(--icon-yellow-text);
+                            "
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M2 15c0 4.4 3.6 8 8 8s8-3.6 8-8c0-4.4-3.6-8-8-8s-8 3.6-8 8Z"
+                                ></path>
+                                <path d="M12 20v-8"></path>
+                                <path d="M5 12.5c4-3 8-3 14 0"></path>
+                            </svg>
+                        </div>
+                        <h2>Hitos de su Vida</h2>
+                    </div>
+                    <div
+                        class="line"
+                        style="background-color: var(--icon-yellow-bg)"
+                    ></div>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto"
+                    id="hitos-container-horizontal"
+                >
+                    <div class="milestone-card reveal delay-100">
+                        <div
+                            class="milestone-icon"
+                            style="
+                                background-color: var(--icon-blue-bg);
+                                color: var(--icon-blue-text);
+                            "
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M2 15c0 4.4 3.6 8 8 8s8-3.6 8-8c0-4.4-3.6-8-8-8s-8 3.6-8 8Z"
+                                ></path>
+                                <path d="M12 20v-8"></path>
+                                <path d="M5 12.5c4-3 8-3 14 0"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-3xl">1889</h3>
+                        <h4
+                            class="text-lg font-semibold text-[var(--accent-color)] mt-1"
+                        >
+                            Nacimiento
+                        </h4>
+                        <p class="opacity-70 mt-3 text-sm">
+                            Nace Lucila Godoy Alcayaga en Vicuña, Chile. Su
+                            infancia en el Valle del Elqui marcaría su obra.
+                        </p>
+                    </div>
+
+                    <div class="milestone-card reveal delay-200">
+                        <div
+                            class="milestone-icon"
+                            style="
+                                background-color: var(--icon-green-bg);
+                                color: var(--icon-green-text);
+                            "
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <circle cx="12" cy="8" r="6"></circle>
+                                <path
+                                    d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-3xl">1914</h3>
+                        <h4
+                            class="text-lg font-semibold text-[var(--accent-color)] mt-1"
+                        >
+                            Juegos Florales
+                        </h4>
+                        <p class="opacity-70 mt-3 text-sm">
+                            Gana con sus 'Sonetos de la Muerte' en Santiago,
+                            dándole notoriedad nacional.
+                        </p>
+                    </div>
+
+                    <div class="milestone-card reveal delay-300">
+                        <div
+                            class="milestone-icon"
+                            style="
+                                background-color: var(--icon-purple-bg);
+                                color: var(--icon-purple-text);
+                            "
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"
+                                ></path>
+                                <path
+                                    d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-3xl">1922</h3>
+                        <h4
+                            class="text-lg font-semibold text-[var(--accent-color)] mt-1"
+                        >
+                            Publica Desolación
+                        </h4>
+                        <p class="opacity-70 mt-3 text-sm">
+                            Publica en Nueva York su primera gran obra,
+                            consolidando su voz única.
+                        </p>
+                    </div>
+
+                    <div class="milestone-card reveal delay-400">
+                        <div
+                            class="milestone-icon"
+                            style="
+                                background-color: var(--icon-yellow-bg);
+                                color: var(--icon-yellow-text);
+                            "
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                                ></polygon>
+                            </svg>
+                        </div>
+                        <h3 class="text-3xl">1945</h3>
+                        <h4
+                            class="text-lg font-semibold text-[var(--accent-color)] mt-1"
+                        >
+                            Premio Nobel
+                        </h4>
+                        <p class="opacity-70 mt-3 text-sm">
+                            Recibe el Premio Nobel de Literatura, siendo la
+                            primera latinoamericana en obtenerlo.
+                        </p>
+                    </div>
+
+                    <div class="milestone-card reveal delay-500">
+                        <div
+                            class="milestone-icon"
+                            style="
+                                background-color: var(--icon-gray-bg);
+                                color: var(--icon-gray-text);
+                            "
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M12 5a3 3 0 0 0-6 0c0 1.66.83 3.12 2.05 4.05L5.03 18.13a.5.5 0 0 0 .44.87h13.06a.5.5 0 0 0 .44-.87L15.95 9.05C17.17 8.12 18 6.66 18 5a3 3 0 0 0-6 0Z"
+                                ></path>
+                                <path d="M12 19v3"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-3xl">1957</h3>
+                        <h4
+                            class="text-lg font-semibold text-[var(--accent-color)] mt-1"
+                        >
+                            Fallecimiento
+                        </h4>
+                        <p class="opacity-70 mt-3 text-sm">
+                            Muere en Nueva York. Sus restos son repatriados y
+                            homenajeados en Chile.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section id="obra" class="w-full p-8 md:p-12 border-b-custom">
+                <div class="section-title-left reveal mb-8">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="icon-wrapper flex-shrink-0 flex items-center justify-center"
+                            style="
+                                background-color: var(--icon-purple-bg);
+                                color: var(--icon-purple-text);
+                            "
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"
+                                ></path>
+                                <path
+                                    d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h2>Obras Fundamentales</h2>
+                    </div>
+                    <div
+                        class="line"
+                        style="background-color: var(--icon-purple-bg)"
+                    ></div>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                    id="obras-container"
+                >
+                    <div
+                        class="flex items-center justify-center h-48 col-span-full"
+                    >
+                        <div class="loader"></div>
+                        <p class="ml-3 opacity-60">Cargando obras...</p>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                id="citas"
+                class="relative w-full p-8 md:p-12 border-b-custom text-center overflow-hidden"
+            >
+                <div class="absolute inset-0 z-0">
+                    <img
+                        src="wallpaper.jpg"
+                        alt="Fondo difuminado"
+                        class="w-full h-full object-cover filter blur-lg opacity-60 scale-110"
+                    />
+                    <div
+                        class="absolute inset-0 bg-[var(--highlight-bg)] opacity-70"
+                    ></div>
+                </div>
+                <div
+                    class="relative z-10 max-w-4xl mx-auto reveal"
+                    id="cita-container"
+                ></div>
+            </section>
+
+            <section id="galeria" class="w-full p-8 md:p-12 border-b-custom">
+                <div class="section-title-left reveal mb-8">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="icon-wrapper flex-shrink-0 flex items-center justify-center"
+                            style="
+                                background-color: var(--icon-blue-bg);
+                                color: var(--icon-blue-text);
+                            "
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M15 8v10a3 3 0 0 0 3 3h2a.5.5 0 0 0 0-1H18a2 2 0 0 1-2-2V8h4l-7-7-7 7h4z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h2>Galería de una Vida</h2>
+                    </div>
+                    <div
+                        class="line"
+                        style="background-color: var(--icon-blue-bg)"
+                    ></div>
+                </div>
+                <div
+                    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+                    id="galeria-container"
+                >
+                    <div
+                        class="flex items-center justify-center h-48 col-span-full"
+                    >
+                        <div class="loader"></div>
+                        <p class="ml-3 opacity-60">
+                            Cargando galería desde Wikimedia Commons...
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="w-full p-8 md:p-12 border-b-custom bg-[var(--text-color)] text-[var(--bg-color)]"
+            >
+                <div class="text-center max-w-4xl mx-auto reveal">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-16 w-16 mx-auto opacity-70"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                    >
+                        <path
+                            d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10.392C2.057 15.71 3.245 16 4.5 16c1.255 0 2.443-.29 3.5-.804V16c0 1.105.895 2 2 2s2-.895 2-2v-1.196c1.057.514 2.245.804 3.5.804 1.255 0 2.443-.29 3.5-.804V4.804C17.943 4.29 16.755 4 15.5 4c-1.255 0-2.443.29-3.5.804V4c0-1.105-.895-2-2-2s-2 .895-2 2v.804z"
+                        />
+                    </svg>
+                    <h2 class="text-4xl md:text-6xl mt-4">
+                        Su Obra, Libre para el Mundo
+                    </h2>
+                    <p class="mt-4 text-lg opacity-80">
+                        El legado literario de Raúl Ruiz se encuentra preservado
+                        y accesible en <strong>Wikisource</strong>, un proyecto
+                        de la Fundación Wikimedia para construir una biblioteca
+                        en línea de textos originales de dominio público o con
+                        licencias libres.
+                    </p>
+                    <a
+                        href="https://es.wikisource.org/wiki/Autor:Gabriela_Mistral"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="mt-8 inline-block bg-[var(--bg-color)] text-[var(--text-color)] font-bold py-3 px-8 uppercase tracking-wider hover:bg-[var(--highlight-bg)] transition-all duration-300 rounded-md"
+                        >Explorar sus Escritos</a
+                    >
+                </div>
+            </section>
+
+            <section class="w-full p-8 md:p-12">
+                <div
+                    class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                >
+                    <div class="reveal">
+                        <h2 class="text-5xl md:text-7xl mb-4">El Nobel</h2>
+                        <p class="text-lg opacity-80 max-w-lg">
+                            El 10 de diciembre de 1945, su nombre resonó en la
+                            historia. No fue un premio para una mujer, sino para
+                            un continente que encontraba en sus versos su propia
+                            voz.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-black text-[var(--bg-color)] p-8 md:p-12 reveal delay-100 rounded-lg"
+                    >
+                        <blockquote
+                            class="text-2xl md:text-3xl leading-snug font-light"
+                        >
+                            "Por su poesía lírica que... ha hecho de su nombre
+                            un símbolo de las aspiraciones idealistas de todo el
+                            mundo latinoamericano."
+                        </blockquote>
+                        <p class="mt-4 text-right opacity-70">
+                            - Academia Sueca, 1945
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer
+            class="w-full p-8 text-center text-sm opacity-60 border-t-custom bg-[var(--highlight-bg)]"
+        >
+            <p>
+                <a
+                    href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="underline hover:text-[var(--accent-color)] transition"
+                    >CC BY-SA </a
+                ><span id="footer-year"></span> / Un tributo digital al legado
+                de Raúl Ruiz.
+            </p>
+            <p class="mt-2 text-xs opacity-50">
+                Toda la información e imágenes se cargan dinámicamente desde
+                Wikipedia y Wikimedia Commons.
+            </p>
+            <p class="mt-2 text-xs opacity-80">
+                Si quieres saber más sobre esta página puedes escribir a
+                <span id="email-link"></span>
+            </p>
+        </footer>
+
+        <div id="imageLightbox" class="lightbox">
+            <span class="lightbox-close">&times;</span>
+            <div class="lightbox-container">
+                <img
+                    class="lightbox-content"
+                    id="lightboxImg"
+                    alt="Imagen ampliada de la galería"
+                />
+                <p id="lightboxCaption">Atribución de la imagen</p>
             </div>
-        </section>
-
-        <section class="w-full p-8 md:p-12 border-b-custom bg-[var(--text-color)] text-[var(--bg-color)]">
-            <div class="text-center max-w-4xl mx-auto reveal">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto opacity-70" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10.392C2.057 15.71 3.245 16 4.5 16c1.255 0 2.443-.29 3.5-.804V16c0 1.105.895 2 2 2s2-.895 2-2v-1.196c1.057.514 2.245.804 3.5.804 1.255 0 2.443-.29 3.5-.804V4.804C17.943 4.29 16.755 4 15.5 4c-1.255 0-2.443.29-3.5.804V4c0-1.105-.895-2-2-2s-2 .895-2 2v.804z" />
-                </svg>
-                <h2 class="text-4xl md:text-6xl mt-4">Su Obra, Libre para el Mundo</h2>
-                <p class="mt-4 text-lg opacity-80">El legado literario de Gabriela Mistral se encuentra preservado y accesible en <strong>Wikisource</strong>, un proyecto de la Fundación Wikimedia para construir una biblioteca en línea de textos originales de dominio público o con licencias libres.</p>
-                <a href="https://es.wikisource.org/wiki/Autor:Gabriela_Mistral" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block bg-[var(--bg-color)] text-[var(--text-color)] font-bold py-3 px-8 uppercase tracking-wider hover:bg-[var(--highlight-bg)] transition-all duration-300 rounded-md">Explorar sus Escritos</a>
-            </div>
-        </section>
-        
-        <section class="w-full p-8 md:p-12">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="reveal"><h2 class="text-5xl md:text-7xl mb-4">El Nobel</h2><p class="text-lg opacity-80 max-w-lg">El 10 de diciembre de 1945, su nombre resonó en la historia. No fue un premio para una mujer, sino para un continente que encontraba en sus versos su propia voz.</p></div>
-                <div class="bg-black text-[var(--bg-color)] p-8 md:p-12 reveal delay-100 rounded-lg"><blockquote class="text-2xl md:text-3xl leading-snug font-light">"Por su poesía lírica que... ha hecho de su nombre un símbolo de las aspiraciones idealistas de todo el mundo latinoamericano."</blockquote><p class="mt-4 text-right opacity-70">- Academia Sueca, 1945</p></div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="w-full p-8 text-center text-sm opacity-60 border-t-custom bg-[var(--highlight-bg)]">
-        <p><a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer" class="underline hover:text-[var(--accent-color)] transition">CC BY-SA </a><span id="footer-year"></span> / Un tributo digital al legado de Gabriela Mistral.</p>
-        <p class="mt-2 text-xs opacity-50">Toda la información e imágenes se cargan dinámicamente desde Wikipedia y Wikimedia Commons.</p>
-        <p class="mt-2 text-xs opacity-80">Si quieres saber más sobre esta página puedes escribir a <span id="email-link"></span></p>
-    </footer>
-
-    <div id="imageLightbox" class="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <div class="lightbox-container">
-            <img class="lightbox-content" id="lightboxImg" alt="Imagen ampliada de la galería">
-            <p id="lightboxCaption">Atribución de la imagen</p>
         </div>
-    </div>
 
-    <div id="svg-icon-templates" style="position: absolute; width: 0; height: 0; overflow: hidden;">
-        <svg id="icon-nacimiento" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15c0 4.4 3.6 8 8 8s8-3.6 8-8c0-4.4-3.6-8-8-8s-8 3.6-8 8Z"></path><path d="M12 20v-8"></path><path d="M5 12.5c4-3 8-3 14 0"></path></svg>
-        <svg id="icon-premio" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
-        <svg id="icon-libro" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-        <svg id="icon-nobel" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-        <svg id="icon-fallecimiento" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 0 0-6 0c0 1.66.83 3.12 2.05 4.05L5.03 18.13a.5.5 0 0 0 .44.87h13.06a.5.5 0 0 0 .44-.87L15.95 9.05C17.17 8.12 18 6.66 18 5a3 3 0 0 0-6 0Z"></path><path d="M12 19v3"></path></svg>
-    </div>
+        <div
+            id="svg-icon-templates"
+            style="position: absolute; width: 0; height: 0; overflow: hidden"
+        >
+            <svg
+                id="icon-nacimiento"
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path
+                    d="M2 15c0 4.4 3.6 8 8 8s8-3.6 8-8c0-4.4-3.6-8-8-8s-8 3.6-8 8Z"
+                ></path>
+                <path d="M12 20v-8"></path>
+                <path d="M5 12.5c4-3 8-3 14 0"></path>
+            </svg>
+            <svg
+                id="icon-premio"
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <circle cx="12" cy="8" r="6"></circle>
+                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+            </svg>
+            <svg
+                id="icon-libro"
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+            <svg
+                id="icon-nobel"
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                ></polygon>
+            </svg>
+            <svg
+                id="icon-fallecimiento"
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path
+                    d="M12 5a3 3 0 0 0-6 0c0 1.66.83 3.12 2.05 4.05L5.03 18.13a.5.5 0 0 0 .44.87h13.06a.5.5 0 0 0 .44-.87L15.95 9.05C17.17 8.12 18 6.66 18 5a3 3 0 0 0-6 0Z"
+                ></path>
+                <path d="M12 19v3"></path>
+            </svg>
+        </div>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        
-        
-        const currentYear = new Date().getFullYear();
-        document.getElementById('current-year').textContent = currentYear;
-        document.getElementById('footer-year').textContent = currentYear;
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const currentYear = new Date().getFullYear();
+                document.getElementById("current-year").textContent =
+                    currentYear;
+                document.getElementById("footer-year").textContent =
+                    currentYear;
 
-        const user = "contacto";
-        const domain = "wikimediachile.cl";
+                const user = "contacto";
+                const domain = "wikimediachile.cl";
 
-        document.getElementById("email-link").innerHTML = `
-            <a href="mailto:${user}@${domain}" 
+                document.getElementById("email-link").innerHTML = `
+            <a href="mailto:${user}@${domain}"
             class="underline hover:text-[var(--accent-color)] transition">
             ${user}@${domain}
             </a>
         `;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("visible");
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { threshold: 0.1 },
+                );
 
-        const observeElements = () => {
-             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        };
+                const observeElements = () => {
+                    document
+                        .querySelectorAll(".reveal")
+                        .forEach((el) => observer.observe(el));
+                };
 
-        
-        
-        
-        const obras = [
-            { titulo: "Desolación", anio: "1922", enlace: "https://es.wikipedia.org/wiki/Desolaci%C3%B3n_(libro)", imagen: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Desolación_1922_primera_edici%C3%B3n.jpg?width=400", descripcion: "Un mapa del dolor, la fe y la condición humana.", attribution: "Primera edición (Dominio Público)" },
-            { titulo: "Ternura", anio: "1924", enlace: "https://es.wikipedia.org/wiki/Ternura_(libro)", imagen: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ternura_1924_primera_edici%C3%B3n.jpg?width=400", descripcion: "Universo de rondas y cantos para los niños.", attribution: "Primera edición (Dominio Público)" },
-            { titulo: "Tala", anio: "1938", enlace: "https://es.wikipedia.org/wiki/Tala_(poemario)", imagen: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tala_1938_primera_edici%C3%B3n.jpg?width=400", descripcion: "Un canto a la identidad y raíces de América.", attribution: "Primera edición (Dominio Público)" },
-            { titulo: "Lagar", anio: "1954", enlace: "https://es.wikipedia.org/wiki/Lagar_(libro)", imagen: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Lagar_1954_primera_edici%C3%B3n.jpg?width=400", descripcion: "Su testamento poético sobre la vida y la muerte.", attribution: "Primera edición (Dominio Público)" }
-        ];
+                const obras = [
+                    {
+                        titulo: "Desolación",
+                        anio: "1922",
+                        enlace: "https://es.wikipedia.org/wiki/Desolaci%C3%B3n_(libro)",
+                        imagen: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Desolación_1922_primera_edici%C3%B3n.jpg?width=400",
+                        descripcion:
+                            "Un mapa del dolor, la fe y la condición humana.",
+                        attribution: "Primera edición (Dominio Público)",
+                    },
+                    {
+                        titulo: "Ternura",
+                        anio: "1924",
+                        enlace: "https://es.wikipedia.org/wiki/Ternura_(libro)",
+                        imagen: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ternura_1924_primera_edici%C3%B3n.jpg?width=400",
+                        descripcion:
+                            "Universo de rondas y cantos para los niños.",
+                        attribution: "Primera edición (Dominio Público)",
+                    },
+                    {
+                        titulo: "Tala",
+                        anio: "1938",
+                        enlace: "https://es.wikipedia.org/wiki/Tala_(poemario)",
+                        imagen: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tala_1938_primera_edici%C3%B3n.jpg?width=400",
+                        descripcion:
+                            "Un canto a la identidad y raíces de América.",
+                        attribution: "Primera edición (Dominio Público)",
+                    },
+                    {
+                        titulo: "Lagar",
+                        anio: "1954",
+                        enlace: "https://es.wikipedia.org/wiki/Lagar_(libro)",
+                        imagen: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Lagar_1954_primera_edici%C3%B3n.jpg?width=400",
+                        descripcion:
+                            "Su testamento poético sobre la vida y la muerte.",
+                        attribution: "Primera edición (Dominio Público)",
+                    },
+                ];
 
-        
+                const citas = [
+                    {
+                        texto: "Donde haya un árbol que plantar, plántalo tú. Donde haya un error que enmendar, enmiéndalo tú. Donde haya un esfuerzo que todos esquivan, acéptalo tú.",
+                        fuente: "El placer de servir",
+                    },
+                    {
+                        texto: "Hay besos que producen desvaríos de amorosa pasión, bien loca, que os roban el sensorio, que os vuelven tiernos y os hacen felices.",
+                        fuente: "Besos",
+                    },
+                    {
+                        texto: "El mundo cambia en un instante. Nacemos en un día. Morimos en un día. En un día podemos cambiar. Y en un día podemos enamorarnos.",
+                        fuente: "Reflexión",
+                    },
+                ];
 
-        const citas = [
-            { texto: "Donde haya un árbol que plantar, plántalo tú. Donde haya un error que enmendar, enmiéndalo tú. Donde haya un esfuerzo que todos esquivan, acéptalo tú.", fuente: "El placer de servir" },
-            { texto: "Hay besos que producen desvaríos de amorosa pasión, bien loca, que os roban el sensorio, que os vuelven tiernos y os hacen felices.", fuente: "Besos" },
-            { texto: "El mundo cambia en un instante. Nacemos en un día. Morimos en un día. En un día podemos cambiar. Y en un día podemos enamorarnos.", fuente: "Reflexión" }
-        ];
-        
-        let dynamicGalleryData = [];
+                let dynamicGalleryData = [];
 
-        
-        const renderError = (container, message) => {
-            container.innerHTML = `<p class="text-red-600 p-4 bg-red-100 rounded-md">${message}</p>`;
-        };
+                const renderError = (container, message) => {
+                    container.innerHTML = `<p class="text-red-600 p-4 bg-red-100 rounded-md">${message}</p>`;
+                };
 
-        
+                const renderWorks = (obrasData) => {
+                    const container =
+                        document.getElementById("obras-container");
+                    if (!obrasData || obrasData.length === 0) {
+                        renderError(
+                            container,
+                            "No hay obras configuradas para mostrar.",
+                        );
+                        return;
+                    }
 
-        
-        const renderWorks = (obrasData) => {
-            const container = document.getElementById('obras-container');
-            if (!obrasData || obrasData.length === 0) {
-                renderError(container, "No hay obras configuradas para mostrar.");
-                return;
-            }
-
-            const worksHTML = obrasData.map((obra, index) => `
+                    const worksHTML = obrasData
+                        .map(
+                            (obra, index) => `
                 <a href="${obra.enlace}" target="_blank" rel="noopener noreferrer" class="work-card group relative block w-full h-96 reveal delay-${index * 100}">
-                    
-                    
+
+
                     <img src="${obra.imagen}" alt="Portada del libro ${obra.titulo}" class="work-card-image" loading="lazy"
-                         onerror="this.onerror=null; this.src='https://placehold.co/400x600/eee/ccc?text=Portada+no+disponible'; this.nextElementSibling.style.display='flex';"> 
-                    
-                    
+                         onerror="this.onerror=null; this.src='https://placehold.co/400x600/eee/ccc?text=Portada+no+disponible'; this.nextElementSibling.style.display='flex';">
+
+
                     <div class="absolute inset-0 bg-gray-100 flex-col gap-2 items-center justify-center text-center p-4" style="display: none;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-12 h-12 text-gray-400"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                         <span class="text-xs text-gray-600">No se pudo cargar la portada de "${obra.titulo}".</span>
@@ -749,196 +1617,319 @@
                         <p class="font-['Montserrat'] text-5xl font-semibold mt-1" style="color: var(--icon-purple-text);">${obra.anio}</p>
                     </div>
                 </a>
-            `).join('');
+            `,
+                        )
+                        .join("");
 
-            container.innerHTML = worksHTML;
-            
-            
-            observeElements();
-        };
-        
-        const renderQuote = () => {
-            const container = document.getElementById('cita-container');
-            const citaAleatoria = citas[Math.floor(Math.random() * citas.length)];
-            container.innerHTML = `
+                    container.innerHTML = worksHTML;
+
+                    observeElements();
+                };
+
+                const renderQuote = () => {
+                    const container = document.getElementById("cita-container");
+                    const citaAleatoria =
+                        citas[Math.floor(Math.random() * citas.length)];
+                    container.innerHTML = `
                 <span class="quote-mark">“</span>
                 <blockquote class="text-3xl md:text-5xl font-light italic mt-[-2rem]">${citaAleatoria.texto}</blockquote>
                 <p class="mt-6 text-xl font-semibold tracking-wider opacity-80">${citaAleatoria.fuente}</p>
             `;
-        };
-        
-        
-        const renderStaticBioData = () => {
-            try {
-                const birthDateEl = document.getElementById('info-nacimiento');
-                const birthPlaceEl = document.getElementById('info-lugar');
-                const occupationsEl = document.getElementById('info-roles');
+                };
 
-                birthDateEl.textContent = '7 de abril de 1889';
-                birthPlaceEl.textContent = 'Vicuña, Chile';
-                occupationsEl.textContent = 'Poeta, Diplomática, Pedagoga, Profesora';
-                
-                document.querySelectorAll('.info-card').forEach(card => {
-                    card.classList.add('visible');
-                });
+                const renderStaticBioData = () => {
+                    try {
+                        const birthDateEl =
+                            document.getElementById("info-nacimiento");
+                        const birthPlaceEl =
+                            document.getElementById("info-lugar");
+                        const occupationsEl =
+                            document.getElementById("info-roles");
 
-            } catch (error) {
-                 console.error("Error al renderizar datos estáticos de biografía:", error);
-                 const container = document.getElementById('wikidata-info-container');
-                 renderError(container, `Error al renderizar datos biográficos estáticos.`);
-            }
-        };
+                        birthDateEl.textContent = "7 de abril de 1889";
+                        birthPlaceEl.textContent = "Vicuña, Chile";
+                        occupationsEl.textContent =
+                            "Poeta, Diplomática, Pedagoga, Profesora";
 
-        const renderStaticBioImage = () => {
-            const bioImageContainer = document.getElementById('biografia-imagen-container');
-            try {
-                const imageUrl = "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gabriela_Mistral_1945.jpg?width=600";
-                const attribution = "Fotografía: Annemarie Heinrich (Dominio Público)";
-                bioImageContainer.innerHTML = `
-                    
-                    
-                    <img src="${imageUrl}" alt="Retrato de Gabriela Mistral en 1945" class="w-full h-auto object-contain object-center" loading="lazy">
+                        document
+                            .querySelectorAll(".info-card")
+                            .forEach((card) => {
+                                card.classList.add("visible");
+                            });
+                    } catch (error) {
+                        console.error(
+                            "Error al renderizar datos estáticos de biografía:",
+                            error,
+                        );
+                        const container = document.getElementById(
+                            "wikidata-info-container",
+                        );
+                        renderError(
+                            container,
+                            `Error al renderizar datos biográficos estáticos.`,
+                        );
+                    }
+                };
+
+                const renderStaticBioImage = () => {
+                    const bioImageContainer = document.getElementById(
+                        "biografia-imagen-container",
+                    );
+                    try {
+                        const imageUrl =
+                            "https://commons.wikimedia.org/wiki/Special:Redirect/file/Gabriela_Mistral_1945.jpg?width=600";
+                        const attribution =
+                            "Fotografía: Annemarie Heinrich (Dominio Público)";
+                        bioImageContainer.innerHTML = `
+
+
+                    <img src="${imageUrl}" alt="Retrato de Raúl Ruiz en 1945" class="w-full h-auto object-contain object-center" loading="lazy">
                     <figcaption class="absolute bottom-2 left-2 text-white text-xs bg-black/60 px-2 py-1 rounded">
                         ${attribution}
                     </figcaption>`;
-            } catch (error) {
-                 console.error("Error al renderizar la imagen de biografía:", error);
-                 renderError(bioImageContainer, `Error al cargar la imagen.`);
-            }
-        };
-
-        const loadWikipediaData = async () => {
-            const bioTextContainer = document.getElementById('biografia-texto-container');
-
-            try {
-                const response = await fetch('https://es.wikipedia.org/api/rest_v1/page/summary/Gabriela_Mistral?origin=*');
-                if (!response.ok) throw new Error('No se pudo conectar a la API de Wikipedia.');
-                
-                const data = await response.json();
-                if (!data.extract) throw new Error('Datos incompletos desde Wikipedia.');
-
-                
-                const extractoOriginal = data.extract.split('. ').slice(0, 5).join('. ');
-                const extractoFormateado = extractoOriginal
-                    .replace(/Gabriela Mistral/g, `<span class="font-semibold text-[var(--accent-color)]">Gabriela Mistral</span>`)
-                    .replace(/poetisa/g, `<span class="font-semibold text-gray-700">poetisa</span>`)
-                    .replace(/Premio Nobel de Literatura/g, `<span class="font-semibold text-[var(--accent-color)]">Premio Nobel de Literatura</span>`);
-
-                bioTextContainer.innerHTML = `<p class="text-lg leading-relaxed opacity-80">${extractoFormateado}</p>`;
-
-            } catch (error) {
-                console.error("Error al cargar datos de Wikipedia:", error);
-                renderError(bioTextContainer, `Error al cargar la biografía: ${error.message}`);
-            }
-        };
-        
-        const loadWorksFromWikipedia = async () => {
-            const container = document.getElementById('obras-container');
-            const titles = "Sonetos de la muerte | Desolación |Ternura (libro)|Lagar (libro)";
-            const apiUrl = `https://es.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages|extracts|info&pithumbsize=400&exintro=true&explaintext=true&inprop=url&titles=${encodeURIComponent(titles)}`;
-            
-            const fallbackYears = {
-                "Sonetos de la muerte": "1915",
-                "Desolación": "1922",
-                "Ternura (libro)": "1924",
-                "Lagar (libro)": "1954"
-            };
-
-            try {
-                const response = await fetch(apiUrl);
-                if (!response.ok) throw new Error(`Error de red de Wikipedia: ${response.statusText}`);
-                const data = await response.json();
-                const pages = data.query.pages;
-
-                if (!pages) throw new Error('No se encontraron obras en Wikipedia.');
-
-                const obrasData = Object.values(pages).map(page => {
-                    const titulo = page.title.replace(/\s*\(.*?\)\s*/g, ''); 
-                    const extract = page.extract ?? 'Descripción no disponible.';
-                    
-                    let anio = fallbackYears[page.title] ?? 'Año desc.';
-                    const yearMatch = extract.match(/\((\d{4})\)/) ?? extract.match(/en (\d{4})/);
-                    if (yearMatch && yearMatch[1]) {
-                        anio = yearMatch[1];
+                    } catch (error) {
+                        console.error(
+                            "Error al renderizar la imagen de biografía:",
+                            error,
+                        );
+                        renderError(
+                            bioImageContainer,
+                            `Error al cargar la imagen.`,
+                        );
                     }
+                };
 
-                    const enlace = page.fullurl ?? `https://es.wikipedia.org/wiki/${page.title.replace(/ /g, '_')}`;
-                    const imagen = page.thumbnail?.source ?? 'https://placehold.co/400x600/eee/ccc?text=Portada+no+disponible';
-                    const descripcion = extract;
-                    const attribution = 'Fuente: Wikipedia/Commons'; 
+                const loadWikipediaData = async () => {
+                    const bioTextContainer = document.getElementById(
+                        "biografia-texto-container",
+                    );
 
-                    return { titulo, anio, enlace, imagen, descripcion, attribution };
-                });
+                    try {
+                        const response = await fetch(
+                            "https://es.wikipedia.org/api/rest_v1/page/summary/Gabriela_Mistral?origin=*",
+                        );
+                        if (!response.ok)
+                            throw new Error(
+                                "No se pudo conectar a la API de Wikipedia.",
+                            );
 
-                const order = ['Desolación', 'Ternura', 'Tala', 'Lagar'];
-                const sortedObras = obrasData.sort((a, b) => {
-                    return order.indexOf(a.titulo) - order.indexOf(b.titulo);
-                });
+                        const data = await response.json();
+                        if (!data.extract)
+                            throw new Error(
+                                "Datos incompletos desde Wikipedia.",
+                            );
 
-                renderWorks(sortedObras);
+                        const extractoOriginal = data.extract
+                            .split(". ")
+                            .slice(0, 5)
+                            .join(". ");
+                        const extractoFormateado = extractoOriginal
+                            .replace(
+                                /Raúl Ruiz/g,
+                                `<span class="font-semibold text-[var(--accent-color)]">Raúl Ruiz</span>`,
+                            )
+                            .replace(
+                                /poetisa/g,
+                                `<span class="font-semibold text-gray-700">poetisa</span>`,
+                            )
+                            .replace(
+                                /Premio Nobel de Literatura/g,
+                                `<span class="font-semibold text-[var(--accent-color)]">Premio Nobel de Literatura</span>`,
+                            );
 
-            } catch (error) {
-                console.error("Error al cargar obras desde Wikipedia:", error);
-                renderError(container, `Error al cargar obras desde Wikipedia: ${error.message}. Mostrando datos locales.`);
-                renderWorks(obras); 
-            }
-        };
-
-        const loadGalleryFromCommons = async () => {
-            const container = document.getElementById('galeria-container');
-            const commonsApi = 'https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*';
-            const category = 'Category:Gabriela_Mistral';
-            const limit = 16; 
-
-            try {
-                const catResponse = await fetch(`${commonsApi}&list=categorymembers&cmtitle=${category}&cmtype=file&cmlimit=${limit}`);
-                const catData = await catResponse.json();
-                const files = catData.query.categorymembers;
-
-                if (!files || files.length === 0) throw new Error('No se encontraron archivos en la categoría de Commons.');
-
-                const fileTitles = files.map(file => file.title).join('|');
-                const infoResponse = await fetch(`${commonsApi}&titles=${encodeURIComponent(fileTitles)}&prop=imageinfo&iiprop=url|user|extmetadata&iiurlwidth=800`);
-                const infoData = await infoResponse.json();
-                
-                const pages = infoData.query.pages;
-                dynamicGalleryData = Object.values(pages).map(page => {
-                    if (!page.imageinfo || !page.imageinfo[0]) return null;
-                    
-                    const info = page.imageinfo[0];
-                    const metadata = info.extmetadata;
-                    
-                    const validExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.svg'];
-                    if (!info.url || !validExtensions.some(ext => info.url.toLowerCase().endsWith(ext))) {
-                        return null;
+                        bioTextContainer.innerHTML = `<p class="text-lg leading-relaxed opacity-80">${extractoFormateado}</p>`;
+                    } catch (error) {
+                        console.error(
+                            "Error al cargar datos de Wikipedia:",
+                            error,
+                        );
+                        renderError(
+                            bioTextContainer,
+                            `Error al cargar la biografía: ${error.message}`,
+                        );
                     }
+                };
 
-                    const author = metadata.Artist ? metadata.Artist.value.replace(/<[^>]+>/g, '') : (info.user || 'Desconocido');
-                    const license = metadata.LicenseShortName ? metadata.LicenseShortName.value : 'Sin licencia';
+                const loadWorksFromWikipedia = async () => {
+                    const container =
+                        document.getElementById("obras-container");
+                    const titles =
+                        "Sonetos de la muerte | Desolación |Ternura (libro)|Lagar (libro)";
+                    const apiUrl = `https://es.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages|extracts|info&pithumbsize=400&exintro=true&explaintext=true&inprop=url&titles=${encodeURIComponent(titles)}`;
 
-                    return {
-                        url: info.url,
-                        attribution: `${author} (${license})`
+                    const fallbackYears = {
+                        "Sonetos de la muerte": "1915",
+                        Desolación: "1922",
+                        "Ternura (libro)": "1924",
+                        "Lagar (libro)": "1954",
                     };
-                }).filter(item => item !== null);
 
-                if (!dynamicGalleryData || dynamicGalleryData.length === 0) {
-                    throw new Error('No se encontraron archivos de IMAGEN compatibles en la categoría de Commons.');
-                }
+                    try {
+                        const response = await fetch(apiUrl);
+                        if (!response.ok)
+                            throw new Error(
+                                `Error de red de Wikipedia: ${response.statusText}`,
+                            );
+                        const data = await response.json();
+                        const pages = data.query.pages;
 
-                let galleryHTML = dynamicGalleryData.map((item, index) => {
-                     
-                     
-                     return `
+                        if (!pages)
+                            throw new Error(
+                                "No se encontraron obras en Wikipedia.",
+                            );
+
+                        const obrasData = Object.values(pages).map((page) => {
+                            const titulo = page.title.replace(
+                                /\s*\(.*?\)\s*/g,
+                                "",
+                            );
+                            const extract =
+                                page.extract ?? "Descripción no disponible.";
+
+                            let anio = fallbackYears[page.title] ?? "Año desc.";
+                            const yearMatch =
+                                extract.match(/\((\d{4})\)/) ??
+                                extract.match(/en (\d{4})/);
+                            if (yearMatch && yearMatch[1]) {
+                                anio = yearMatch[1];
+                            }
+
+                            const enlace =
+                                page.fullurl ??
+                                `https://es.wikipedia.org/wiki/${page.title.replace(/ /g, "_")}`;
+                            const imagen =
+                                page.thumbnail?.source ??
+                                "https://placehold.co/400x600/eee/ccc?text=Portada+no+disponible";
+                            const descripcion = extract;
+                            const attribution = "Fuente: Wikipedia/Commons";
+
+                            return {
+                                titulo,
+                                anio,
+                                enlace,
+                                imagen,
+                                descripcion,
+                                attribution,
+                            };
+                        });
+
+                        const order = [
+                            "Desolación",
+                            "Ternura",
+                            "Tala",
+                            "Lagar",
+                        ];
+                        const sortedObras = obrasData.sort((a, b) => {
+                            return (
+                                order.indexOf(a.titulo) -
+                                order.indexOf(b.titulo)
+                            );
+                        });
+
+                        renderWorks(sortedObras);
+                    } catch (error) {
+                        console.error(
+                            "Error al cargar obras desde Wikipedia:",
+                            error,
+                        );
+                        renderError(
+                            container,
+                            `Error al cargar obras desde Wikipedia: ${error.message}. Mostrando datos locales.`,
+                        );
+                        renderWorks(obras);
+                    }
+                };
+
+                const loadGalleryFromCommons = async () => {
+                    const container =
+                        document.getElementById("galeria-container");
+                    const commonsApi =
+                        "https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*";
+                    const category = "Category:Gabriela_Mistral";
+                    const limit = 16;
+
+                    try {
+                        const catResponse = await fetch(
+                            `${commonsApi}&list=categorymembers&cmtitle=${category}&cmtype=file&cmlimit=${limit}`,
+                        );
+                        const catData = await catResponse.json();
+                        const files = catData.query.categorymembers;
+
+                        if (!files || files.length === 0)
+                            throw new Error(
+                                "No se encontraron archivos en la categoría de Commons.",
+                            );
+
+                        const fileTitles = files
+                            .map((file) => file.title)
+                            .join("|");
+                        const infoResponse = await fetch(
+                            `${commonsApi}&titles=${encodeURIComponent(fileTitles)}&prop=imageinfo&iiprop=url|user|extmetadata&iiurlwidth=800`,
+                        );
+                        const infoData = await infoResponse.json();
+
+                        const pages = infoData.query.pages;
+                        dynamicGalleryData = Object.values(pages)
+                            .map((page) => {
+                                if (!page.imageinfo || !page.imageinfo[0])
+                                    return null;
+
+                                const info = page.imageinfo[0];
+                                const metadata = info.extmetadata;
+
+                                const validExtensions = [
+                                    ".jpg",
+                                    ".jpeg",
+                                    ".png",
+                                    ".gif",
+                                    ".svg",
+                                ];
+                                if (
+                                    !info.url ||
+                                    !validExtensions.some((ext) =>
+                                        info.url.toLowerCase().endsWith(ext),
+                                    )
+                                ) {
+                                    return null;
+                                }
+
+                                const author = metadata.Artist
+                                    ? metadata.Artist.value.replace(
+                                          /<[^>]+>/g,
+                                          "",
+                                      )
+                                    : info.user || "Desconocido";
+                                const license = metadata.LicenseShortName
+                                    ? metadata.LicenseShortName.value
+                                    : "Sin licencia";
+
+                                return {
+                                    url: info.url,
+                                    attribution: `${author} (${license})`,
+                                };
+                            })
+                            .filter((item) => item !== null);
+
+                        if (
+                            !dynamicGalleryData ||
+                            dynamicGalleryData.length === 0
+                        ) {
+                            throw new Error(
+                                "No se encontraron archivos de IMAGEN compatibles en la categoría de Commons.",
+                            );
+                        }
+
+                        let galleryHTML = dynamicGalleryData
+                            .map((item, index) => {
+                                return `
                         <div class="gallery-item-wrapper reveal aspect-square">
-                            <img src="${item.url}" alt="Fotografía histórica de Gabriela Mistral ${index + 1}" class="gallery-item" loading="lazy">
+                            <img src="${item.url}" alt="Fotografía histórica de Raúl Ruiz ${index + 1}" class="gallery-item" loading="lazy">
                             <div class="gallery-item-attribution">${item.attribution}</div>
                         </div>`;
-                }).join('');
+                            })
+                            .join("");
 
-                
-                
-                galleryHTML += `
+                        galleryHTML += `
                     <a href="https://commons.wikimedia.org/wiki/Category:Gabriela_Mistral" target="_blank" rel="noopener noreferrer"
                          class="gallery-cta-card reveal aspect-square">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--accent-color)] mb-3"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path><path d="M7 13v-2h10v2"></path><path d="M13 7h-2v10h2"></path></svg>
@@ -947,83 +1938,93 @@
                     </a>
                 `;
 
-                container.innerHTML = galleryHTML;
+                        container.innerHTML = galleryHTML;
 
-                attachGalleryListeners();
-                observeElements(); 
-
-            } catch (error) {
-                console.error("Error al cargar la galería de Commons:", error);
-                renderError(container, `Error al cargar la galería: ${error.message}`);
-            }
-        };
-
-        
-        const lightbox = document.getElementById('imageLightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxCaption = document.getElementById('lightboxCaption');
-        const closeBtn = document.querySelector('.lightbox-close');
-
-        const openLightbox = (item) => {
-            lightbox.style.display = "block";
-            lightboxImg.src = item.url;
-            lightboxCaption.textContent = item.attribution;
-        };
-
-        const closeLightbox = () => {
-            lightbox.style.display = "none";
-        };
-
-        const attachGalleryListeners = () => {
-            document.querySelectorAll('.gallery-item-wrapper').forEach((wrapper, index) => {
-                if (index < dynamicGalleryData.length) { 
-                    const item = dynamicGalleryData[index];
-                    if (item) {
-                        wrapper.addEventListener('click', () => openLightbox(item));
+                        attachGalleryListeners();
+                        observeElements();
+                    } catch (error) {
+                        console.error(
+                            "Error al cargar la galería de Commons:",
+                            error,
+                        );
+                        renderError(
+                            container,
+                            `Error al cargar la galería: ${error.message}`,
+                        );
                     }
-                }
+                };
+
+                const lightbox = document.getElementById("imageLightbox");
+                const lightboxImg = document.getElementById("lightboxImg");
+                const lightboxCaption =
+                    document.getElementById("lightboxCaption");
+                const closeBtn = document.querySelector(".lightbox-close");
+
+                const openLightbox = (item) => {
+                    lightbox.style.display = "block";
+                    lightboxImg.src = item.url;
+                    lightboxCaption.textContent = item.attribution;
+                };
+
+                const closeLightbox = () => {
+                    lightbox.style.display = "none";
+                };
+
+                const attachGalleryListeners = () => {
+                    document
+                        .querySelectorAll(".gallery-item-wrapper")
+                        .forEach((wrapper, index) => {
+                            if (index < dynamicGalleryData.length) {
+                                const item = dynamicGalleryData[index];
+                                if (item) {
+                                    wrapper.addEventListener("click", () =>
+                                        openLightbox(item),
+                                    );
+                                }
+                            }
+                        });
+                };
+
+                closeBtn.addEventListener("click", closeLightbox);
+                lightbox.addEventListener("click", (e) => {
+                    if (e.target === lightbox) closeLightbox();
+                });
+
+                const initializePage = async () => {
+                    renderQuote();
+                    renderStaticBioData();
+                    renderStaticBioImage();
+
+                    const results = await Promise.allSettled([
+                        loadWikipediaData(),
+                        loadGalleryFromCommons(),
+                        loadWorksFromWikipedia(),
+                    ]);
+
+                    results.forEach((result, index) => {
+                        if (result.status === "rejected") {
+                            const promiseNames = [
+                                "WikipediaData",
+                                "GalleryFromCommons",
+                                "WorksFromWikipedia",
+                            ];
+                            console.error(
+                                `Error al cargar ${promiseNames[index]}:`,
+                                result.reason,
+                            );
+                        }
+                    });
+
+                    observeElements();
+                };
+
+                initializePage();
             });
-        };
-
-        closeBtn.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
-        });
-
-        
-        const initializePage = async () => {
-            
-            
-            
-            
-            renderQuote();
-            renderStaticBioData();
-            renderStaticBioImage();
-
-            
-            
-            const results = await Promise.allSettled([
-                loadWikipediaData(),
-                loadGalleryFromCommons(),
-                loadWorksFromWikipedia() 
-            ]);
-
-            results.forEach((result, index) => {
-                if (result.status === 'rejected') {
-                    const promiseNames = ['WikipediaData', 'GalleryFromCommons', 'WorksFromWikipedia'];
-                    console.error(`Error al cargar ${promiseNames[index]}:`, result.reason);
-                }
-            });
-            
-            
-            observeElements();
-        };
-
-        initializePage();
-    });
-    </script>
-    <script data-goatcounter="https://wikimediacl.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-</body>
+        </script>
+        <script
+            data-goatcounter="https://wikimediacl.goatcounter.com/count"
+            async
+            src="//gc.zgo.at/count.js"
+        ></script>
+    </body>
 </html>
-
