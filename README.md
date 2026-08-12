@@ -1,21 +1,18 @@
-# Gabriela Mistral – Portafolio de un legado
-
+# Raúl Ruiz – Dashboard de un legado
 
 [![Licencia](https://img.shields.io/badge/licencia-MIT-blue)](LICENSE)
 
-Un sitio web estático que presenta la vida, obra y legado de **Gabriela Mistral**, utilizando datos abiertos y contenido en vivo desde el ecosistema Wikimedia.
-
-**Versión en vivo:** https://mistral.wikimedia.cl/
+Un sitio web estático que presenta la vida, obra y legado del cineasta **Raúl Ruiz**, utilizando datos abiertos y contenido en vivo desde el ecosistema Wikimedia.
 
 ---
 
 ## Acerca del Proyecto
 
-**Gabriela Mistral – Portafolio de un legado** es un proyecto web diseñado para demostrar cómo reutilizar datos abiertos del ecosistema Wikimedia en una experiencia visual moderna.
+**Raúl Ruiz – Dashboard de un legado** es un proyecto web diseñado para demostrar cómo reutilizar datos abiertos del ecosistema Wikimedia en una experiencia visual moderna.
 
 El sitio integra contenido actualizado automáticamente desde:
 
-- **Wikipedia** (biografía, obras, extractos)
+- **Wikipedia** (biografía, obras, reconocimientos)
 - **Wikimedia Commons** (galería de imágenes, autoría, licencias)
 - **Wikisource** (acceso a textos en dominio público)
 
@@ -26,8 +23,10 @@ Este proyecto sirve como ejemplo de conocimiento como infraestructura, mostrando
 ## Características Principales
 
 * 📘 **Biografía Dinámica:** Los primeros párrafos de la biografía se cargan en vivo desde la API REST de Wikipedia.
+* 🏆 **Reconocimientos:** Premios y distinciones del artista, como el Premio Nacional de Artes de la Representación.
 * 🖼️ **Galería desde Wikimedia Commons:** Imágenes recuperadas desde una categoría de Commons.
-* 📚 **Obras Fundamentales:** Portadas, descripciones y enlaces directos a Wikipedia para las principales obras de Gabriela Mistral.
+* 📚 **Obras Fundamentales:** Portadas, descripciones y enlaces directos a Wikipedia para las principales obras de Raúl Ruiz.
+* 🗓️ **Hitos:** Cronología de momentos clave en la vida y carrera del cineasta.
 * ✍️ **Citas Aleatorias:** Generación dinámica de citas destacadas en cada visita.
 
 ---
@@ -47,8 +46,7 @@ Este proyecto está construido completamente sobre tecnologías web abiertas:
 
 - [Wikipedia REST API](https://www.mediawiki.org/wiki/REST_API)
 - [Wikipedia Action API](https://www.mediawiki.org/wiki/API:Main_page)
-- [Wikimedia Commons API
-  ](https://commons.wikimedia.org/w/api.php)
+- [Wikimedia Commons API](https://commons.wikimedia.org/w/api.php)
 
 ---
 
@@ -74,11 +72,9 @@ cd tu-repositorio
 python3 -m http.server
 ```
 
-¡Listo! La aplicación estará corriendo en `http://localhost:8000`. 
+¡Listo! La aplicación estará corriendo en `http://localhost:8000`.
 
 ---
-
-
 
 ## Licencia
 
@@ -87,10 +83,9 @@ El código del sitio puede liberarse bajo MIT u otra licencia abierta.
 
 ---
 
-
-
 ## Contacto
 
 Jordy Lizana - [jordylizana-ship-it](https://github.com/jordylizana-ship-it)
 Carla Toro - [Soylacarli](https://github.com/Soylacarli)
+Tomás Bazán - [tromvn](https://github.com/tromvn)
 Con el apoyo de **[Wikimedia Chile](https://wikimedia.cl/)**
